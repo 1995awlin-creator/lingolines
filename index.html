@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LingoLines – Dual Subtitles for YouTube™ | Free Chrome Extension</title>
+<meta name="description" content="LingoLines is a free Chrome extension that shows YouTube subtitles in two languages at once: the original line and a translation underneath. 35 languages, no account, no API key.">
+<link rel="canonical" href="https://1995awlin-creator.github.io/lingolines/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://1995awlin-creator.github.io/lingolines/">
+<meta property="og:title" content="LingoLines – Dual Subtitles for YouTube™">
+<meta property="og:description" content="See YouTube subtitles in two languages at once. Learn a language while you watch. Free, no account, no API key.">
+<meta property="og:image" content="https://1995awlin-creator.github.io/lingolines/promo-tile.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon128.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LingoLines – Dual Subtitles for YouTube™",
+  "alternateName": "LingoLines",
+  "url": "https://1995awlin-creator.github.io/lingolines/",
+  "description": "A free Chrome extension that shows YouTube subtitles in two languages at once: the video's own subtitles and a translation underneath, in any of 35 languages. No account or API key needed.",
+  "applicationCategory": "BrowserApplication",
+  "applicationSubCategory": "Language learning",
+  "operatingSystem": "Chrome (desktop)",
+  "softwareVersion": "1.0.2",
+  "installUrl": "https://chromewebstore.google.com/detail/bfhcpgmihpboppipajilkgmapoemegbl",
+  "image": "https://1995awlin-creator.github.io/lingolines/icon128.png",
+  "screenshot": ["https://1995awlin-creator.github.io/lingolines/screenshot-1.png", "https://1995awlin-creator.github.io/lingolines/screenshot-2.png"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Shows the original subtitles and a translation at the same time",
+    "Translates into 35 languages",
+    "Works with human-made subtitles and auto-generated captions",
+    "Turns on and off with YouTube's CC button",
+    "No account, no sign-up, no API key",
+    "No tracking, analytics or ads"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is LingoLines free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. LingoLines is free to install and use. There's no account, no sign-up and no API key to set up."}},
+    {"@type": "Question", "name": "Where do the translations come from?", "acceptedAnswer": {"@type": "Answer", "text": "The first line is the video's own subtitles or YouTube's auto-captions. The second line is YouTube's own automatic translation of those same subtitles, so both lines share the same timing. If a video also has a human-made subtitle track in your language, you can choose to use that instead."}},
+    {"@type": "Question", "name": "How accurate are the translations?", "acceptedAnswer": {"@type": "Answer", "text": "As accurate as YouTube's automatic translation, which handles everyday speech well but can stumble on slang, names and jokes. On videos that only have auto-captions, mistakes in the captions carry into the translation."}},
+    {"@type": "Question", "name": "Which videos does it work on?", "acceptedAnswer": {"@type": "Answer", "text": "Any video on youtube.com that has subtitles or auto-captions, which is most of them. It can't show anything on a video with no captions at all."}},
+    {"@type": "Question", "name": "Does LingoLines work on Netflix or other sites?", "acceptedAnswer": {"@type": "Answer", "text": "No. LingoLines works only on youtube.com. It doesn't work on Netflix, Disney+, other streaming sites, or YouTube videos embedded on other websites."}},
+    {"@type": "Question", "name": "Which browsers does it support?", "acceptedAnswer": {"@type": "Answer", "text": "Google Chrome on a computer (Windows, Mac, Linux or ChromeOS). Edge, Brave and other Chromium browsers can install extensions from the Chrome Web Store, but LingoLines isn't tested on them. It doesn't work in Firefox, Safari, or on phones and tablets."}},
+    {"@type": "Question", "name": "How do I turn the subtitles on and off?", "acceptedAnswer": {"@type": "Answer", "text": "With YouTube's own CC button, the same way you turn normal subtitles on and off. To switch LingoLines off completely, click its icon in the Chrome toolbar."}},
+    {"@type": "Question", "name": "Can I change the language of the first line?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Pick a different language in YouTube's own subtitles menu and the first line follows it. The second line's language is set in the LingoLines popup."}},
+    {"@type": "Question", "name": "Can I show only one of the two lines?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In the popup, untick \"Show original subtitles\" to see only the translation, or set the second language to \"None (original only)\" to see only the original."}},
+    {"@type": "Question", "name": "Does LingoLines collect my data?", "acceptedAnswer": {"@type": "Answer", "text": "No. It has no accounts, no analytics and no servers of its own. Your settings are saved in Chrome. It never records which videos you watch."}},
+    {"@type": "Question", "name": "How is LingoLines different from other dual subtitle extensions?", "acceptedAnswer": {"@type": "Answer", "text": "It needs no account and no API key of your own, because it uses YouTube's own subtitles and translations. The two lines stay in sync because they share the same timing, it follows YouTube's CC button and subtitles menu instead of adding its own controls, and on dubbed videos the first line follows the original audio."}}
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f6fb;
+    --text: #1a1a2e;
+    --muted: #5d5d73;
+    --line: #e4e4ec;
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --on-accent: #ffffff;
+    --chip: #eeedfd;
+    --chip-text: #3730a3;
+    --night: #12121f;
+    --night-text: #ececf2;
+    --night-muted: #a8a8c0;
+    --sub-yellow: #ffe066;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16161f;
+      --surface: #1e1e2a;
+      --text: #ececf2;
+      --muted: #a8a8c0;
+      --line: #2f2f3d;
+      --accent: #8b85ff;
+      --accent-hover: #a29dff;
+      --on-accent: #14141c;
+      --chip: #26254a;
+      --chip-text: #cfccff;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  img { max-width: 100%; height: auto; display: block; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  /* Header + hero share the dark "screen" look of the store images. */
+  .top { background: var(--night); color: var(--night-text); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; font-weight: 700; font-size: 19px; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .nav-links { display: flex; gap: 20px; font-size: 15px; }
+  .nav-links a { color: var(--night-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--night-text); }
+
+  .hero { padding: 40px 0 64px; text-align: center; }
+  .hero h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.12; margin: 0 0 14px; letter-spacing: -0.02em; }
+  .hero h1 span { color: var(--sub-yellow); }
+  .hero .lead { font-size: clamp(17px, 2.4vw, 20px); color: var(--night-muted); max-width: 640px; margin: 0 auto 28px; }
+
+  .btn {
+    display: inline-block; background: #8b85ff; color: #14141c; font-weight: 700;
+    padding: 14px 26px; border-radius: 999px; text-decoration: none; font-size: 17px;
+  }
+  .btn:hover { background: #a29dff; }
+  .btn-note { display: block; margin-top: 10px; font-size: 14px; color: var(--night-muted); }
+
+  /* The demo: two subtitle lines over a sunset, like screenshot-1. */
+  .demo {
+    position: relative; margin: 44px auto 0; max-width: 860px; aspect-ratio: 16 / 9;
+    border-radius: 16px; overflow: hidden;
+    background:
+      radial-gradient(circle at 72% 30%, #fbca85 0 9%, transparent 9.3%),
+      linear-gradient(180deg, #f6ab61 0%, #e3796a 40%, #7d4a8f 70%, #252a52 100%);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+  .demo::after {
+    content: ""; position: absolute; left: -10%; right: -10%; bottom: -30%; height: 58%;
+    background: #232850; border-radius: 50% 50% 0 0;
+  }
+  .subs {
+    position: absolute; left: 0; right: 0; bottom: 9%; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0 12px;
+    font-size: clamp(14px, 2.6vw, 26px); line-height: 1.3;
+  }
+  .subs span { background: rgba(8, 8, 12, 0.78); padding: 3px 12px; border-radius: 6px; max-width: 100%; }
+  .subs .orig { color: #fff; }
+  .subs .trans { color: var(--sub-yellow); }
+  .subs.fade span { opacity: 0; }
+  .subs span { transition: opacity 0.35s; }
+  .demo-caption { margin-top: 14px; font-size: 14px; color: var(--night-muted); min-height: 1.6em; }
+
+  section { padding: 64px 0; }
+  section.alt { background: var(--surface); }
+  h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .section-lead { color: var(--muted); margin: 0 0 32px; max-width: 680px; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; counter-reset: step; list-style: none; padding: 0; margin: 0; }
+  .steps li { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .steps li::before {
+    counter-increment: step; content: counter(step);
+    display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--chip); color: var(--chip-text); font-weight: 700; margin-bottom: 10px;
+  }
+  .steps h3 { margin: 0 0 6px; font-size: 18px; }
+  .steps p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .features { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .features li { padding-left: 28px; position: relative; }
+  .features li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); }
+  .features strong { display: block; }
+  .features span { color: var(--muted); font-size: 16px; }
+  .shot { border-radius: 14px; border: 1px solid var(--line); }
+
+  .uses { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .use { border: 1px solid var(--line); border-radius: 14px; padding: 22px; background: var(--bg); }
+  .use h3 { margin: 0 0 6px; font-size: 18px; }
+  .use p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  .langs { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .langs li { background: var(--chip); color: var(--chip-text); padding: 5px 12px; border-radius: 999px; font-size: 15px; }
+
+  .faq > * { max-width: 760px; }
+  .faq h3 { font-size: 18px; margin: 28px 0 6px; }
+  .faq p { margin: 0; color: var(--muted); }
+
+  .privacy-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; list-style: none; padding: 0; margin: 0 0 20px; }
+  .privacy-box li { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; background: var(--bg); font-weight: 600; }
+
+  .cta { text-align: center; background: var(--night); color: var(--night-text); }
+  .cta h2 span { color: var(--sub-yellow); }
+  .cta p { color: var(--night-muted); margin: 0 0 24px; }
+
+  footer { padding: 28px 0 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+  footer .row { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 760px) {
+    .split { grid-template-columns: 1fr; gap: 28px; }
+    .nav-links a:not(.keep) { display: none; }
+    section { padding: 48px 0; }
+    .hero { padding: 24px 0 48px; }
+    .demo { margin-top: 32px; border-radius: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .subs span { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="./"><img src="icon128.png" alt="" width="32" height="32">LingoLines</a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#languages">Languages</a>
+        <a href="#faq">FAQ</a>
+        <a class="keep" href="privacy.html">Privacy</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <h1>Two languages. <span>One video.</span></h1>
+      <p class="lead">LingoLines is a free Chrome extension that shows YouTube subtitles in two languages at once: the original line, and a translation right underneath.</p>
+      <a class="btn" href="https://chromewebstore.google.com/detail/bfhcpgmihpboppipajilkgmapoemegbl">Add to Chrome, it's free</a>
+      <span class="btn-note">No account. No API key. Nothing to set up.</span>
+
+      <div class="demo" role="img" aria-label="A video with two subtitle lines: the original English line in white and its Spanish translation in yellow underneath.">
+        <div class="subs" id="subs">
+          <span class="orig" id="sub-orig">The best time to start learning is right now.</span>
+          <span class="trans" id="sub-trans">El mejor momento para empezar a aprender es ahora mismo.</span>
+        </div>
+      </div>
+      <p class="demo-caption" id="demo-caption">English video, Spanish translation</p>
+    </header>
+  </div>
+</div>
+
+<main>
+  <section id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="section-lead">LingoLines uses the subtitles YouTube already has, so there's nothing to upload, paste or sign in to.</p>
+      <ol class="steps">
+        <li><h3>Install it</h3><p>Add LingoLines to Chrome from the Chrome Web Store. It's free.</p></li>
+        <li><h3>Play any video</h3><p>Open a YouTube video and turn on subtitles with YouTube's own CC button.</p></li>
+        <li><h3>Read both lines</h3><p>The top line is the video's own subtitles. The yellow line underneath is the translation, in sync, sentence by sentence.</p></li>
+        <li><h3>Pick your language</h3><p>Click the LingoLines icon to choose the translation language. It starts in your browser's language.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="alt" id="features">
+    <div class="wrap split">
+      <div>
+        <h2>Made for learning a language while you watch</h2>
+        <p class="section-lead">Hear the original, read it, and see what it means, line by line.</p>
+        <ul class="features">
+          <li><strong>Translate into 35 languages</strong><span>Spanish, French, German, Japanese, Korean, Chinese, Portuguese, Hindi and more.</span></li>
+          <li><strong>Human subtitles and auto-captions</strong><span>Works with subtitles the creator wrote and with YouTube's auto-generated captions.</span></li>
+          <li><strong>Controlled by YouTube's own buttons</strong><span>The CC button turns it on and off. YouTube's subtitles menu picks the first line.</span></li>
+          <li><strong>Your layout</strong><span>Put the translation on top or underneath, choose the text size, or show just one line.</span></li>
+          <li><strong>Human translations when available</strong><span>Optionally use a video's human-made subtitles in your language instead of the automatic translation.</span></li>
+          <li><strong>Handles dubbed videos</strong><span>On videos with several audio tracks, the first line follows the original audio.</span></li>
+        </ul>
+      </div>
+      <img class="shot" src="screenshot-2.png" width="1280" height="800" alt="The LingoLines popup: a second-language menu set to Spanish, options to show the original subtitles, put the translation on top or use human translations, and a text size menu.">
+    </div>
+  </section>
+
+  <section id="uses">
+    <div class="wrap">
+      <h2>Who uses dual subtitles</h2>
+      <p class="section-lead">Anyone watching videos in a language they're still learning.</p>
+      <div class="uses">
+        <div class="use"><h3>Learning English</h3><p>Watch English videos with English subtitles on top and your own language underneath, whether that's Chinese, Japanese, French or any of the 35.</p></div>
+        <div class="use"><h3>Learning Spanish, Japanese, Korean…</h3><p>Watch creators in the language you're learning and check every line against your own language as you go.</p></div>
+        <div class="use"><h3>Bilingual families</h3><p>Watch together when not everyone in the room is equally comfortable in the video's language.</p></div>
+        <div class="use"><h3>Watching beyond your language</h3><p>Follow lectures, news, interviews and cooking videos from anywhere, with the original still on screen.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="languages">
+    <div class="wrap">
+      <h2>35 translation languages</h2>
+      <p class="section-lead">The first line can be any language the video has subtitles in. The translation line can be any of these:</p>
+      <ul class="langs">
+        <li>Arabic</li><li>Bengali</li><li>Chinese (Simplified)</li><li>Chinese (Traditional)</li><li>Czech</li>
+        <li>Danish</li><li>Dutch</li><li>English</li><li>Filipino</li><li>Finnish</li>
+        <li>French</li><li>German</li><li>Greek</li><li>Hebrew</li><li>Hindi</li>
+        <li>Hungarian</li><li>Indonesian</li><li>Italian</li><li>Japanese</li><li>Korean</li>
+        <li>Malay</li><li>Norwegian</li><li>Persian</li><li>Polish</li><li>Portuguese</li>
+        <li>Romanian</li><li>Russian</li><li>Spanish</li><li>Swedish</li><li>Tamil</li>
+        <li>Thai</li><li>Turkish</li><li>Ukrainian</li><li>Urdu</li><li>Vietnamese</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq">
+      <h2>Questions</h2>
+
+      <h3>Is LingoLines free?</h3>
+      <p>Yes. LingoLines is free to install and use. There's no account, no sign-up and no API key to set up.</p>
+
+      <h3>Where do the translations come from?</h3>
+      <p>The first line is the video's own subtitles or YouTube's auto-captions. The second line is YouTube's own automatic translation of those same subtitles, so both lines share the same timing. If a video also has a human-made subtitle track in your language, you can choose to use that instead.</p>
+
+      <h3>How accurate are the translations?</h3>
+      <p>As accurate as YouTube's automatic translation, which handles everyday speech well but can stumble on slang, names and jokes. On videos that only have auto-captions, mistakes in the captions carry into the translation.</p>
+
+      <h3>Which videos does it work on?</h3>
+      <p>Any video on youtube.com that has subtitles or auto-captions, which is most of them. It can't show anything on a video with no captions at all.</p>
+
+      <h3>Does LingoLines work on Netflix or other sites?</h3>
+      <p>No. LingoLines works only on youtube.com. It doesn't work on Netflix, Disney+, other streaming sites, or YouTube videos embedded on other websites.</p>
+
+      <h3>Which browsers does it support?</h3>
+      <p>Google Chrome on a computer (Windows, Mac, Linux or ChromeOS). Edge, Brave and other Chromium browsers can install extensions from the Chrome Web Store, but LingoLines isn't tested on them. It doesn't work in Firefox, Safari, or on phones and tablets.</p>
+
+      <h3>How do I turn the subtitles on and off?</h3>
+      <p>With YouTube's own CC button, the same way you turn normal subtitles on and off. To switch LingoLines off completely, click its icon in the Chrome toolbar.</p>
+
+      <h3>Can I change the language of the first line?</h3>
+      <p>Yes. Pick a different language in YouTube's own subtitles menu and the first line follows it. The second line's language is set in the LingoLines popup.</p>
+
+      <h3>Can I show only one of the two lines?</h3>
+      <p>Yes. In the popup, untick "Show original subtitles" to see only the translation, or set the second language to "None (original only)" to see only the original.</p>
+
+      <h3>Does LingoLines collect my data?</h3>
+      <p>No. It has no accounts, no analytics and no servers of its own. Your settings are saved in Chrome. It never records which videos you watch. <a href="privacy.html">Read the privacy policy</a>.</p>
+
+      <h3>How is LingoLines different from other dual subtitle extensions?</h3>
+      <p>It needs no account and no API key of your own, because it uses YouTube's own subtitles and translations. The two lines stay in sync because they share the same timing, it follows YouTube's CC button and subtitles menu instead of adding its own controls, and on dubbed videos the first line follows the original audio.</p>
+    </div>
+  </section>
+
+  <section class="alt" id="privacy">
+    <div class="wrap">
+      <h2>Private by design</h2>
+      <ul class="privacy-box">
+        <li>No account or sign-up</li>
+        <li>No tracking or analytics</li>
+        <li>No ads</li>
+        <li>Runs only on youtube.com</li>
+      </ul>
+      <p>Its only other permission is saving your settings. <a href="privacy.html">Privacy policy</a></p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Watch your next video in <span>two languages</span></h2>
+      <p>Free for Chrome. Install it, open YouTube, press play.</p>
+      <a class="btn" href="https://chromewebstore.google.com/detail/bfhcpgmihpboppipajilkgmapoemegbl">Add to Chrome, it's free</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>© 2026 LingoLines · <a href="privacy.html">Privacy</a> · <a href="mailto:1995awlin@gmail.com">Contact</a></span>
+    <span>LingoLines is not affiliated with or endorsed by YouTube or Google. YouTube is a trademark of Google LLC.</span>
+  </div>
+</footer>
+
+<script>
+  // Cycle the hero demo through a few language pairs. The first pair is in
+  // the HTML, so the page reads the same without JavaScript.
+  (function () {
+    var pairs = [
+      ['The best time to start learning is right now.', 'El mejor momento para empezar a aprender es ahora mismo.', 'English video, Spanish translation'],
+      ['The best time to start learning is right now.', '学习的最佳时机就是现在。', 'English video, Chinese translation'],
+      ['今日は東京の古い商店街を歩いてみます。', "Today I'm going to walk through an old shopping street in Tokyo.", 'Japanese video, English translation'],
+      ["On va préparer une vraie tarte aux pommes.", "We're going to make a real apple tart.", 'French video, English translation']
+    ];
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var subs = document.getElementById('subs');
+    var orig = document.getElementById('sub-orig');
+    var trans = document.getElementById('sub-trans');
+    var caption = document.getElementById('demo-caption');
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % pairs.length;
+      subs.classList.add('fade');
+      setTimeout(function () {
+        orig.textContent = pairs[i][0];
+        trans.textContent = pairs[i][1];
+        caption.textContent = pairs[i][2];
+        subs.classList.remove('fade');
+      }, 350);
+    }, 4000);
+  })();
+</script>
+</body>
+</html>

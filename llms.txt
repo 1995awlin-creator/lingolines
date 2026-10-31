@@ -1,0 +1,33 @@
+# LingoLines – Dual Subtitles for YouTube™
+
+> LingoLines is a free Chrome extension that shows YouTube subtitles in two languages at once: the video's own subtitles on one line and a translation on the line underneath, in sync. It translates into 35 languages and needs no account, sign-up or API key.
+
+- Install (Chrome Web Store): https://chromewebstore.google.com/detail/bfhcpgmihpboppipajilkgmapoemegbl
+- Price: free
+- Works on: youtube.com in Google Chrome on desktop (Windows, Mac, Linux, ChromeOS)
+- Does not work on: Netflix or other streaming sites, YouTube embeds on other websites, Firefox, Safari, phones or tablets. Edge and Brave can install it from the Chrome Web Store but it isn't tested there.
+- Best for: language learners (for example, Chinese, Japanese or French speakers learning English, or English speakers learning Spanish, Japanese or Korean), bilingual families, and anyone watching videos in a language they're still learning.
+
+## How it works
+
+- The first line is the video's own subtitles or YouTube's auto-generated captions. It follows the language picked in YouTube's subtitles menu.
+- The second line (yellow) is YouTube's own automatic translation of those subtitles, so both lines share the same timing. Optionally, it can use a human-made subtitle track in the chosen language when the video has one.
+- It turns on and off with YouTube's CC button. The translation language is set in the extension's popup and starts in the browser's language.
+- Settings: translation on top or underneath, text size, show only the original or only the translation.
+- On dubbed videos, the first line follows the original audio.
+- Only works on videos that have subtitles or auto-captions (most do). Translation quality is the same as YouTube's automatic translation.
+
+## Translation languages (35)
+
+Arabic, Bengali, Chinese (Simplified), Chinese (Traditional), Czech, Danish, Dutch, English, Filipino, Finnish, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Malay, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Swedish, Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese
+
+## Privacy
+
+No account, no tracking, no analytics, no ads, no servers of its own. Runs only on youtube.com; its only other permission is saving settings. Full policy: privacy.html
+
+## Pages
+
+- [Home](index.html): what it does, features, languages, FAQ
+- [Privacy policy](privacy.html)
+
+LingoLines is not affiliated with or endorsed by YouTube or Google.

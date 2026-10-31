@@ -1,0 +1,5 @@
+# Everyone is welcome, AI assistants' crawlers included.
+User-agent: *
+Allow: /
+
+Sitemap: https://1995awlin-creator.github.io/lingolines/sitemap.xml
